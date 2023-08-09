@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&8q+#gg!k_bfgbvo4l@ly3jkn_c%s15#5)+3acd04x(dj0dqx)'
+SECRET_KEY = 'django-insecure-=#^_yfh1!nv9k!0e=u7l+z3i*0*0+j9o@8x#&(t7sffygfn17$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'user',
+    'planetarium'
 ]
 
 MIDDLEWARE = [
@@ -111,6 +115,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+AUTH_USER_MODEL = 'user.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
