@@ -1,11 +1,12 @@
-from django.urls import path, include
-
 from rest_framework import routers
 
-from planetarium.views import ShowSessionViewSet
+from planetarium.views import ShowSessionViewSet, ReservationViewSet, AstronomyShowViewSet
 
 router = routers.DefaultRouter()
-router.register("show_sessions", ShowSessionViewSet, basename="sessions-list")
+
+router.register("show_sessions", ShowSessionViewSet, basename="sessions")
+router.register("reservation", ReservationViewSet, basename="reservations")
+router.register("shows", AstronomyShowViewSet)
 
 
 urlpatterns = router.urls
