@@ -110,11 +110,16 @@ class ShowSessionViewSet(
 
     def get_queryset(self):
         title = self.request.query_params.get("title", None)
+        themes_str = self.request.query_params.get("themes", None)
 
         queryset = self.queryset
 
         if title:
             queryset = queryset.filter(show__title__icontains=title)
+
+        if themes_str:
+            themes = [int(theme) for theme in themes_str.split(",")]
+            queryset = queryset.filter(show__themes__id__in=themes)
 
         return queryset
 
@@ -124,6 +129,11 @@ class ShowSessionViewSet(
                     "title",
                     type=OpenApiTypes.STR,
                     description="Filter by show title (ex. ?title=fiction)",
+                ),
+                OpenApiParameter(
+                    "themes",
+                    type=OpenApiTypes.STR,
+                    description="Filter by show title (ex. ?themes=1,2,3)",
                 ),
             ]
         )

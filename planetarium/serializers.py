@@ -1,13 +1,24 @@
 from django.db import transaction
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from planetarium.models import ShowSession, Ticket, Reservation, AstronomyShow, ShowTheme, PlanetariumDome
 
 
 class TicketSerializer(serializers.ModelSerializer):
+    def validate(self, attrs):
+        data = super(TicketSerializer, self).validate(attrs=attrs)
+        Ticket.validate_ticket(
+            attrs["row"],
+            attrs["seat"],
+            attrs["show_session"].planetarium_dome,
+            ValidationError
+        )
+        return data
+
     class Meta:
         model = Ticket
-        fields = ["row", "seat", "show_session"]
+        fields = ["id", "row", "seat", "show_session"]
 
 
 class ReservationSerializer(serializers.ModelSerializer):
