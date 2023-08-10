@@ -20,10 +20,11 @@ Ensure you have installed
 * Docker
 ###### You need Docker engine running on Windows to start app (be sure that you downloaded and started Docker desktop)
 
-### Installation
+### Installation and run
 1. Clone this repository in directory you've choosed on your computer, go to this directory with your terminal `cd path/to/your/directory` than `git clone https://github.com/oleksiikolii/planetarium`
 2. Run `docker-compose up` to start application
 3. App will be available at `127.0.0.1:8000`
+4. To shut down app run press _ctrl + c_ in your terminal
 
 ### Authentication and Registration
 This project uses JWT tokens to authenticate clients.
