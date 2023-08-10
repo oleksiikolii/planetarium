@@ -1,6 +1,6 @@
 # Planetarium
 ### Description
-Small pet project, representation how it can look, little planetarium site where you can reserve tickets for amazing astronomy shows.
+Small pet project, representation how it can look, little planetarium app where you can reserve tickets for amazing astronomy shows.
 ### Functional
 * Install the project
 * Login/Register
