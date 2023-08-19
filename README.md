@@ -39,11 +39,17 @@ However you dont need to, create your own *default user* on `127.0.0.1:8000/api/
 
 You will get two tokens, refresh and access you need to put your *access token* in authenticate form on swagger page, or insert it in headers in format "Bearer _<your_token>_".
 
-#### Additional info
-###### DB diagram
-![Screenshot 2023-08-19 130308](https://github.com/oleksiikolii/planetarium/assets/131553333/e8f39ff6-fd83-4537-b945-3714109699c8)
-
 Access token lifetime is limited so when it expire you can use refresh token to get new one `127.0.0.1:8000/api/user/token/refresh`. Or just get tokens again.
 
 ### Usage
 Documentation with all endpoints will be available at `127.0.0.1:8000/api/doc/swagger`
+
+#### Additional info
+###### DB diagram
+![Screenshot 2023-08-19 130308](https://github.com/oleksiikolii/planetarium/assets/131553333/e8f39ff6-fd83-4537-b945-3714109699c8)
+
+###### Screenshots
+![Screenshot 2023-08-19 132014](https://github.com/oleksiikolii/planetarium/assets/131553333/cffb72e2-b938-467e-a8c2-acc5c5c80530)
+![Screenshot 2023-08-19 131926](https://github.com/oleksiikolii/planetarium/assets/131553333/22b69faf-8381-4a97-9490-3c7283ecbb84)
+![Screenshot 2023-08-19 131834](https://github.com/oleksiikolii/planetarium/assets/131553333/47705c74-2387-4af4-9638-37a4eac514a5)
+![Screenshot 2023-08-19 132028](https://github.com/oleksiikolii/planetarium/assets/131553333/eda3ca8f-4e04-478c-b24e-4448d98277d9)
