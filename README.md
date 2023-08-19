@@ -1,4 +1,3 @@
-![Screenshot 2023-08-19 130308](https://github.com/oleksiikolii/planetarium/assets/131553333/e8f39ff6-fd83-4537-b945-3714109699c8)
 # Planetarium
 ### Description
 Small pet project, representation how it can look, little planetarium app where you can reserve tickets for amazing astronomy shows.
@@ -39,6 +38,10 @@ You can use preinstalled users, there are two instances
 However you dont need to, create your own *default user* on `127.0.0.1:8000/api/user/register`
 
 You will get two tokens, refresh and access you need to put your *access token* in authenticate form on swagger page, or insert it in headers in format "Bearer _<your_token>_".
+
+#### Additional info
+###### DB diagram
+![Screenshot 2023-08-19 130308](https://github.com/oleksiikolii/planetarium/assets/131553333/e8f39ff6-fd83-4537-b945-3714109699c8)
 
 Access token lifetime is limited so when it expire you can use refresh token to get new one `127.0.0.1:8000/api/user/token/refresh`. Or just get tokens again.
 
