@@ -1,3 +1,4 @@
+![Screenshot 2023-08-19 130308](https://github.com/oleksiikolii/planetarium/assets/131553333/e8f39ff6-fd83-4537-b945-3714109699c8)
 # Planetarium
 ### Description
 Small pet project, representation how it can look, little planetarium app where you can reserve tickets for amazing astronomy shows.
