@@ -1,6 +1,10 @@
 from rest_framework import routers
 
-from planetarium.views import ShowSessionViewSet, ReservationViewSet, AstronomyShowViewSet
+from planetarium.views import (
+    ShowSessionViewSet,
+    ReservationViewSet,
+    AstronomyShowViewSet,
+)
 
 router = routers.DefaultRouter()
 

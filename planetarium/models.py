@@ -37,10 +37,7 @@ def show_image_file_path(instance, filename):
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    themes = models.ManyToManyField(
-        ShowTheme,
-        related_name="shows"
-    )
+    themes = models.ManyToManyField(ShowTheme, related_name="shows")
     image = models.ImageField(null=True, upload_to=show_image_file_path)
 
     def __str__(self):
@@ -50,36 +47,24 @@ class AstronomyShow(models.Model):
 class ShowSession(models.Model):
     show_time = models.DateTimeField()
     show = models.ForeignKey(
-        AstronomyShow,
-        on_delete=models.CASCADE,
-        related_name="sessions"
+        AstronomyShow, on_delete=models.CASCADE, related_name="sessions"
     )
-    planetarium_dome = models.ForeignKey(
-        PlanetariumDome,
-        on_delete=models.CASCADE
-    )
+    planetarium_dome = models.ForeignKey(PlanetariumDome, on_delete=models.CASCADE)
 
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(
-        get_user_model(),
-        on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
 
 class Ticket(models.Model):
     row = models.IntegerField()
     seat = models.IntegerField()
     show_session = models.ForeignKey(
-        ShowSession,
-        on_delete=models.CASCADE,
-        related_name="tickets"
+        ShowSession, on_delete=models.CASCADE, related_name="tickets"
     )
     reservation = models.ForeignKey(
-        Reservation,
-        on_delete=models.CASCADE,
-        related_name="tickets"
+        Reservation, on_delete=models.CASCADE, related_name="tickets"
     )
 
     class Meta:
@@ -97,9 +82,9 @@ class Ticket(models.Model):
                 raise error_to_raise(
                     {
                         ticket_attr_name: f"{ticket_attr_name} "
-                                          f"number must be in available range: "
-                                          f"(1, {astronomy_dome_attr_name}): "
-                                          f"(1, {count_attrs})"
+                        f"number must be in available range: "
+                        f"(1, {astronomy_dome_attr_name}): "
+                        f"(1, {count_attrs})"
                     }
                 )
 

@@ -5,15 +5,16 @@ import planetarium.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('planetarium', '0004_alter_ticket_reservation_alter_ticket_show_session'),
+        ("planetarium", "0004_alter_ticket_reservation_alter_ticket_show_session"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='astronomyshow',
-            name='image',
-            field=models.ImageField(null=True, upload_to=planetarium.models.show_image_file_path),
+            model_name="astronomyshow",
+            name="image",
+            field=models.ImageField(
+                null=True, upload_to=planetarium.models.show_image_file_path
+            ),
         ),
     ]

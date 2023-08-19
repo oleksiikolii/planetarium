@@ -2,7 +2,14 @@ from django.db import transaction
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from planetarium.models import ShowSession, Ticket, Reservation, AstronomyShow, ShowTheme, PlanetariumDome
+from planetarium.models import (
+    ShowSession,
+    Ticket,
+    Reservation,
+    AstronomyShow,
+    ShowTheme,
+    PlanetariumDome,
+)
 
 
 class TicketSerializer(serializers.ModelSerializer):
@@ -12,7 +19,7 @@ class TicketSerializer(serializers.ModelSerializer):
             attrs["row"],
             attrs["seat"],
             attrs["show_session"].planetarium_dome,
-            ValidationError
+            ValidationError,
         )
         return data
 
@@ -73,13 +80,9 @@ class PlanetariumDomeSerializer(serializers.ModelSerializer):
 
 class ShowSessionSerializer(serializers.ModelSerializer):
     tickets_available = serializers.IntegerField(read_only=True)
-    show_title = serializers.CharField(
-        source="show.title",
-        read_only=True
-    )
+    show_title = serializers.CharField(source="show.title", read_only=True)
     planetarium_dome_name = serializers.CharField(
-        source="planetarium_dome.name",
-        read_only=True
+        source="planetarium_dome.name", read_only=True
     )
 
     class Meta:
@@ -91,7 +94,7 @@ class ShowSessionSerializer(serializers.ModelSerializer):
             "show_time",
             "planetarium_dome",
             "planetarium_dome_name",
-            "tickets_available"
+            "tickets_available",
         )
 
 
