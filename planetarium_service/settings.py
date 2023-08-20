@@ -7,8 +7,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    SECRET_KEY = "%c*l3xhxv1+alety1qqtx^u-(l-^34+wu+g(f9fq&5t@ot*cjc"
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",

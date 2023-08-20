@@ -10,7 +10,7 @@ router = routers.DefaultRouter()
 
 router.register("show_sessions", ShowSessionViewSet, basename="sessions")
 router.register("reservation", ReservationViewSet, basename="reservations")
-router.register("shows", AstronomyShowViewSet)
+router.register("shows", AstronomyShowViewSet, basename="shows")
 
 
 urlpatterns = router.urls
