@@ -7,7 +7,13 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 
-from planetarium.models import ShowSession, Reservation, AstronomyShow, PlanetariumDome, ShowTheme
+from planetarium.models import (
+    ShowSession,
+    Reservation,
+    AstronomyShow,
+    PlanetariumDome,
+    ShowTheme,
+)
 from planetarium.serializers import (
     ShowSessionSerializer,
     ReservationSerializer,
@@ -23,9 +29,7 @@ from .permissions import IsAdminOrReadOnly
 
 
 class ShowThemeViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    viewsets.GenericViewSet
+    mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet
 ):
     queryset = ShowTheme.objects.all()
     serializer_class = ThemeSerializer
@@ -33,9 +37,7 @@ class ShowThemeViewSet(
 
 
 class PlanetariumDomeViewSet(
-    mixins.ListModelMixin,
-    mixins.CreateModelMixin,
-    viewsets.GenericViewSet
+    mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet
 ):
     queryset = PlanetariumDome.objects.all()
     serializer_class = PlanetariumDomeSerializer
@@ -46,11 +48,9 @@ class AstronomyShowViewSet(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
-    queryset = AstronomyShow.objects.prefetch_related(
-        "themes"
-    )
+    queryset = AstronomyShow.objects.prefetch_related("themes")
     serializer_class = AstronomyShowSerializer
     permission_classes = [IsAdminOrReadOnly]
 
@@ -89,11 +89,9 @@ class ShowSessionViewSet(
     mixins.CreateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.UpdateModelMixin,
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
-    queryset = ShowSession.objects.select_related(
-        "show"
-    ).annotate(
+    queryset = ShowSession.objects.select_related("show").annotate(
         tickets_available=(
             F("planetarium_dome__rows") * F("planetarium_dome__seats_in_row")
             - Count("tickets")
@@ -124,19 +122,19 @@ class ShowSessionViewSet(
         return queryset
 
     @extend_schema(
-            parameters=[
-                OpenApiParameter(
-                    "title",
-                    type=OpenApiTypes.STR,
-                    description="Filter by show title (ex. ?title=fiction)",
-                ),
-                OpenApiParameter(
-                    "themes",
-                    type=OpenApiTypes.STR,
-                    description="Filter by show title (ex. ?themes=1,2,3)",
-                ),
-            ]
-        )
+        parameters=[
+            OpenApiParameter(
+                "title",
+                type=OpenApiTypes.STR,
+                description="Filter by show title (ex. ?title=fiction)",
+            ),
+            OpenApiParameter(
+                "themes",
+                type=OpenApiTypes.STR,
+                description="Filter by show title (ex. ?themes=1,2,3)",
+            ),
+        ]
+    )
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
 
@@ -145,11 +143,10 @@ class ReservationViewSet(
     mixins.ListModelMixin,
     mixins.RetrieveModelMixin,
     mixins.CreateModelMixin,
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
