@@ -12,6 +12,7 @@ services:
       sh -c "python manage.py wait_for_db --settings=planetarium_service.settings_prod&&
              python manage.py makemigrations --settings=planetarium_service.settings_prod &&
              python manage.py migrate --settings=planetarium_service.settings_prod &&
+             python manage.py loaddata data.json&&
              python manage.py runserver 0.0.0.0:8000 --settings=planetarium_service.settings_prod"
     env_file:
       - .env
